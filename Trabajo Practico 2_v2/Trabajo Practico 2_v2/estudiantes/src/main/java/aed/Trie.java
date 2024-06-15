@@ -194,7 +194,7 @@ public class Trie<T> {
 
     private boolean noApuntaANadie(Nodo nodo){
         for (int i=0;i==nodo.lista.size();i++){
-            if (nodo.lista[i]!=null){
+            if (nodo.lista.get(i)!=null){
                 return false;
             }
         }
@@ -204,7 +204,7 @@ public class Trie<T> {
     private boolean masDeUnHijo (Nodo nodo){ 
         int j=0;
         for (int i=0;nodo.lista.length();i++){
-            if (nodo.lista[i]!=null){
+            if (nodo.lista.get(i)!=null){
                 j++;
             }
         }
