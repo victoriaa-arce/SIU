@@ -21,11 +21,11 @@ public class Trie<T> {
 
     public Nodo() {
         this.definicion=null;
-        this.lista= new ArrayList<Nodo>(255) ; //27
+        this.lista= new ArrayList<Nodo>(256) ; //27
     }
 
     public void poner (char ch, Nodo nodo){
-        lista.set(ch, nodo);
+        lista.set(ch, nodo); // ver si esto funciona si no es (int) ch
     }
 
     public Nodo obtener (char ch){
