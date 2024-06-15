@@ -37,7 +37,9 @@ public class Trie {
 
    }
 
-
+   public int cantidad(){
+    return this.cantidad;
+   }
 
 
 
