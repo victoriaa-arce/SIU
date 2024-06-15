@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 import javax.swing.plaf.metal.MetalBorders.PaletteBorder;
 
-public class Trie {
+public class Trie<T> {
 
     //Invariante de Representación
     // No llego por dos claves al mismo nodo / los nodos tienen un solo padre salvo la raíz (que no tiene padre) / es un árbol
@@ -11,12 +11,12 @@ public class Trie {
 
 
 
-   private Nodo raiz;
+   private Nodo<T> raiz;
    private int cantidad;
 
-   private class Nodo {
+   private class Nodo<T> {
     T definicion;
-    Array<Nodo> lista;
+    ArrayList<Nodo<T>> lista;
     //boolean estaDefinido;
 
     public Nodo() {
@@ -183,3 +183,4 @@ public class Trie {
 
 
 }
+
