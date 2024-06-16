@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 
 import javax.swing.plaf.metal.MetalBorders.PaletteBorder;
-import java.util.*;
 public class Trie {
 
     //Invariante de Representación
@@ -57,7 +56,7 @@ public class Trie {
         return false;
     } else{
 
-        for (int i=0; palabra.length();i++){           //recorre la palabra por cararcter Ej: armario
+        for (int i=0; i<palabra.length();i++){           //recorre la palabra por cararcter Ej: armario
             if (!actual.contiene(palabra.charAt(i))){  //si en la posicion array[a]=null
                 return false;  
             }
@@ -78,7 +77,7 @@ public class Trie {
 
    public void insertar(String palabra, T valor) {
     Nodo actual = this.raiz;
-    for (int i=0; palabra.length();i++){ //recorre la palabra por cararcter Ej: armario
+    for (int i=0;i < palabra.length();i++){ //recorre la palabra por cararcter Ej: armario
         if (!actual.contiene(palabra.charAt(i))){  //si en la posicion array[a]=null
             actual.poner(palabra.charAt(i), new Nodo());  //pongo en array[a] (donde a se convierte a numero) un nuevo nodo (referencia)
         }
@@ -99,7 +98,7 @@ public class Trie {
     char letra=palabra.charAt(0);
 
     //busco y elimino significado
-    for (int i=0; palabra.length();i++){  //recorro palabra
+    for (int i=0; i< palabra.length();i++){  //recorro palabra
         if(masDeUnHijo(otro) || otro.definicion!=null){  //si tiene mas de un hijo o tiene significado me guardo que nodo es y que letra 
            ultimoUtil=otro;
            letra=palabra.charAt(i+1);                  // guardo la siguiente letra de la palabra para borrar esa referencia
@@ -116,7 +115,7 @@ public class Trie {
 
    public T obtener (String palabra){
     Nodo actual= this.raiz;
-    for (int i=0; palabra.length();i++){
+    for (int i=0; i <palabra.length();i++){
         actual=actual.obtener(palabra.charAt(i));
     }
 
@@ -145,34 +144,7 @@ public class Trie {
         recorrer(actual.obtener(primeroConReferencia(actual)));
 
     } */
-    /*public recRecorrido() {
-        if(raiz==null) {
-            return "" ;
-
-        }
-        else {
-            recorrido(raiz,null,0) ;
-        }
-    }
-    public recorrido(Nodo actual,StringBuffer palabra,int tamaño) {
-        StringBuffer prefijo = new StringBuffer() ;
-        ArrayList res = new ArrayList<StringBuffer>() ;
-        if(actual.definicion != null) {
-            res.add(prefijo) ;
-            return res ;
-        }
-        else {
-            for(int i=0 ; i<255 ;i++) {
-                if(actual.lista[i] != null) {
-                    c = (char) i ;
-                    prefijo.append(c) ;
-                    recorrido(actual.lista[i],prefijo,tamaño) ;
-
-                }
-
-            }        }
-    } */
-  
+   
 
 
 
@@ -181,14 +153,14 @@ public class Trie {
     //FUNCIONES AUXILIARES
 
     private char primeroConReferencia(Nodo nodo){  //Devuelve cual es la primera referencia (orden lexicografico?) Hay que fijarse que pasa con los numeros
-        for (int i=0;nodo.lista.length();i++){
+        for (int i=0;i<nodo.lista.length();i++){
             if (nodo.lista[i]!=null){
                 return (char) i;
             }
         }
     }
     private boolean noApuntaANadie(Nodo nodo){
-        for (int i=0;nodo.lista.length();i++){
+        for (int i=0;i<nodo.lista.length();i++){
             if (nodo.lista[i]!=null){
                 return false;
             }
@@ -198,14 +170,18 @@ public class Trie {
 
     private boolean masDeUnHijo (Nodo nodo){ 
         int j=0;
-        for (int i=0;nodo.lista.length();i++){
+        for (int i=0;i<nodo.lista.length();i++){
             if (nodo.lista[i]!=null){
                 j++;
             }
         }
         return (j>1);
     }
-  
+  public static void main(String[] args) {
+    Trie a = new Trie() :
+    a.insertar("algo2",1) ;
+    //aca intente hacer debugging pero tiraba muchos errores de tipos,ya pregunte en el campus q onda 
+  }
 
 
 
