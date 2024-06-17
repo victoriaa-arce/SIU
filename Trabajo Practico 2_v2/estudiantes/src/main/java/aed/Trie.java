@@ -13,13 +13,13 @@ public class Trie {
    private int cantidad;
 
    private class Nodo {
-    T definicion ;
-    Array<Nodo> lista;
+    T definicion ; //0(1)
+    Array<Nodo> lista; //0(1)
     //boolean estaDefinido;
 
     public Nodo() {
-        nodo.definicion=null;
-        nodo.lista= new Array<>(255); //27
+        nodo.definicion=null; //0(1)
+        nodo.lista= new Array<>(255); //0(1)
     }
 
     public void poner (char ch, Nodo nodo){

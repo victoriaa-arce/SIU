@@ -14,126 +14,127 @@ public class Trie<T> {
    private int cantidad;
 
    private class Nodo {
-    T definicion;
-    ArrayList<Nodo> lista;
+    T definicion; //O(1)
+    ArrayList<Nodo> lista; //O(1)
    
 
     public Nodo() {
-        this.definicion=null;
-        this.lista= new ArrayList<Nodo>() ;
+        this.definicion=null; //O(1)
+        this.lista= new ArrayList<Nodo>() ; //O(1)
 
-        for(int i=0; i<256; i++){
-            this.lista.add(null);
-        }
+        for(int i=0; i<256; i++){ //O(256)
+            this.lista.add(null); //O(1)
+        } //O(1)*O(256) = 0(1)
 
 
     }
 
     public void poner (char ch, Nodo nodo){
-        lista.set( (int) ch, nodo);
+        lista.set( (int) ch, nodo); //O(1)
     }
 
     public Nodo obtener (char ch){
-        return lista.get((int) ch);
+        return lista.get((int) ch);  //O(1)
     }
 
     public boolean contiene(char ch){
-        return (lista.get((int) ch)!=null);
+        return (lista.get((int) ch)!=null);  //O(1)
     }
 
    }
 
 
    public Trie() {
-    this.raiz= new Nodo();
-    this.cantidad=0;
-   }
+    this.raiz= new Nodo();  //O(1)
+    this.cantidad=0; //O(1)
+   } //O(1)+ O(1) = O(1)
 
 
    public boolean definido (String palabra){
-    Nodo actual=this.raiz;
+    Nodo actual=this.raiz;  //O(1)
 
-    if (this.raiz==null){
-        return false;
+    if (this.raiz==null){  //O(1)
+        return false;  //O(1)+O(1) = O(1)
     } else{
 
-        for (int i=0; i<palabra.length();i++){           //recorre la palabra por cararcter Ej: armario
-            if (!actual.contiene(palabra.charAt(i))){  //si en la posicion array[a]=null
-                return false;  
+        for (int i=0; i<palabra.length();i++){  //recorre la palabra por cararcter Ej: armario  O(|palabra|)
+            if (!actual.contiene(palabra.charAt(i))){  //si en la posicion array[a]=null  O(1) + O(1) +  O(1) =  O(1)
+                return false;   //O(1)+O(1)=O(1)*O(|palabra|) = O(|palabra|)
             }
-            actual=actual.obtener(palabra.charAt(i));  //sino actual pasa a ser el nodo que esta en array[a]
-        } 
-
-        if(actual.definicion==null){
-            return false;
+            actual=actual.obtener(palabra.charAt(i));  //sino actual pasa a ser el nodo que esta en array[a]  //O(1)+O(1)+O(1)=O(1)
+        }  //O(1) *  O(|palabra|)  =  O(|palabra|)
+       //El peor caso seria en el que llegue a i==|palabra| y que en el nodo actual el valor no esté definido.
+        if(actual.definicion==null){  //O(1)
+            return false;  //O(1)
         } else{
-            return true;
+            return true;  //O(1)
         }
     }
-
-   }
+   //el pero caso seria que entre en el for
+   }  //por lo tanto,la complejidad del peor caso es de O(|palabra|)+O(1)+O(1)= O(|palabra|)
 
 
 
 
    public void insertar(String palabra, T valor) {
-    Nodo actual = this.raiz;
-    for (int i=0; i<palabra.length();i++){ //recorre la palabra por cararcter Ej: armario
-        if (!actual.contiene(palabra.charAt(i))){  //si en la posicion array[a]=null
-            actual.poner(palabra.charAt(i), new Nodo());  //pongo en array[a] (donde a se convierte a numero) un nuevo nodo (referencia)
+    Nodo actual = this.raiz;  //O(1)
+    for (int i=0; i<palabra.length();i++){ //recorre la palabra por caracter Ej: armario  //O(|palabra|)
+        if (!actual.contiene(palabra.charAt(i))){  //si en la posicion array[a]=null  //O(1) + O(1) + O(1) = O(1)
+            actual.poner(palabra.charAt(i), new Nodo());  //pongo en array[a] (donde a se convierte a numero) un nuevo nodo (referencia) O(1) + O(1) + O(1) = O(1)
         }
-        actual=actual.obtener(palabra.charAt(i));  //sino actual pasa a ser el nodo que esta en array[a]
-    }
-    actual.definicion=valor;  //recorri toda la palabra inserto el significado
-    this.cantidad++;
+        actual=actual.obtener(palabra.charAt(i));  //sino actual pasa a ser el nodo que esta en array[a]     O(1) + O(1) + O(1) = O(1)
+    } //(O(1)+ O(1) + O(1)) * O(|palabra|) = O(|palabra|)
+    //el peor caso es cuando en el Trie todavia no hay ninguna palabra que empiece con la primer letra de la palabra a insertar.
+    actual.definicion=valor;  //recorri toda la palabra e inserto el significado //O(1)
+    this.cantidad++; //O(1)
 
-   }
+   } //O(|palabra|)
 
 
 
 
    public void borrar (String palabra){
-    Nodo actual=this.raiz;
-    Nodo otro=this.raiz;
-    Nodo ultimoUtil= this.raiz;
-    char letra=palabra.charAt(0);
-    int i=0;
+    Nodo actual=this.raiz; //O(1)
+    Nodo otro=this.raiz; //O(1)
+    Nodo ultimoUtil= this.raiz; //O(1)
+    char letra=palabra.charAt(0); //O(1)
+    int i=0; //O(1)
 
-    while(i<palabra.length()){
-        actual=actual.obtener(palabra.charAt(i));  //me muevo para abajo en ambos
-        otro=otro.obtener(palabra.charAt(i));
+    while(i<palabra.length()){ //O(|palabra|)
+        actual=actual.obtener(palabra.charAt(i));  //me muevo para abajo en ambos O(1)
+        otro=otro.obtener(palabra.charAt(i)); //O(1)
 
-        if(masDeUnHijo(otro) || otro.definicion!=null){  //si tiene mas de un hijo o tiene significado me guardo que nodo es y que letra 
-            ultimoUtil=otro;
-            letra=palabra.charAt(i);                  // guardo la siguiente letra de la palabra para borrar esa referencia
-        }
+        if(masDeUnHijo(otro) || otro.definicion!=null){  //si tiene mas de un hijo o tiene significado me guardo que nodo es y que letra //O(1)+O(1)+O(1) = O(1)
+            ultimoUtil=otro;    //O(1)
+            letra=palabra.charAt(i);    // guardo la siguiente letra de la palabra para borrar esa referencia //O(1)
+        } //O(1)+O(1)+O(1) = O(1)
 
-        i++;
-    }
+        i++; //O(1)
+    } //O(|palabra)*(O(1)+O(1)+O(1)) = O(|palabra|)
     
-    actual.definicion=null;                     //elimino la definicion
-    if (masDeUnHijo(ultimoUtil)){
-        ultimoUtil.lista.set( (int) letra, null);   // ya el ultimo util no hace referencia a los nodos que me sobraban
-    }
-    cantidad--;
-   }
+    actual.definicion=null;  //elimino la definicion //O(1)
+    if (masDeUnHijo(ultimoUtil)){ //O(1)
+        ultimoUtil.lista.set( (int) letra, null);   // ya el ultimo util no hace referencia a los nodos que me sobraban O(1)
+    } //O(1)+O(1)= O(1)
+    cantidad--; //O(1)
+   } //O(|palabra|)+O(1)+O(1)+O(1) = O(|palabra|)
 
 
 
    
 
    public T obtener (String palabra){
-    Nodo actual= this.raiz;
-    for (int i=0;i<palabra.length();i++){
-        actual=actual.obtener(palabra.charAt(i));
-    }
-
-    return actual.definicion;
-   }
+    Nodo actual= this.raiz; //O(1)
+    for (int i=0;i<palabra.length();i++){ //O(|palabra|)
+        actual=actual.obtener(palabra.charAt(i)); //O(1)+O(1)+O(1) = O(1)
+    } //O(|palabra|)*O(1) = O(|palabra|)
+    
+    return actual.definicion; //O(1)
+   } //O(1)+O(|palabra|)+O(1) = O(|palabra|)
 
 
    public int tamaño(){
-    return this.cantidad;
+    return this.cantidad; //O(1)
    }
 
 
@@ -192,37 +193,37 @@ public class Trie<T> {
 
 
     //FUNCIONES AUXILIARES
-
+ 
 
     private char primeroConReferencia(Nodo nodo){  //Devuelve cual es la primera referencia (orden lexicografico?) Hay que fijarse que pasa con los numeros
-        char m;
-        int i=0;
+        char m; //O(1)
+        int i=0; //O(1)
 
-        while(i<nodo.lista.size() && nodo.lista.get(i)==null){
-            i++;
-        }
-        m= (char) i;
-        return m;
-    }
+        while(i<nodo.lista.size() && nodo.lista.get(i)==null){ //O(256)
+            i++; //O(1)
+        } //O(1)*O(256) = O(1)
+        m= (char) i; //O(1)
+        return m; //O(1)
+    } //O(1)
 
     private boolean noApuntaANadie(Nodo nodo){
-        for (int i=0;i==nodo.lista.size();i++){
-            if (nodo.lista.get(i)!=null){
-                return false;
+        for (int i=0;i==nodo.lista.size();i++){ //O(256)
+            if (nodo.lista.get(i)!=null){ //O(1)+O(1) = O(1)
+                return false;//O(1)
             }
         }
-        return true;
-    }
+        return true;//O(1)
+    } //O(1)
 
     private boolean masDeUnHijo (Nodo nodo){ 
-        int j=0;
-        for (int i=0;i<nodo.lista.size();i++){
-            if (nodo.lista.get(i)!=null){
-                j++;
+        int j=0; //O(1)
+        for (int i=0;i<nodo.lista.size();i++){ //O(256)
+            if (nodo.lista.get(i)!=null){ //O(1)+O(1)
+                j++;//O(1)
             }
         }
-        return (j>1);
-    }
+        return (j>1); //O(1)
+    } //O(1)
 
     public class Trie_Iterador  {
         ArrayList<String> palabras;
