@@ -136,7 +136,15 @@ public class Trie<T> {
    public int tamaño(){
     return this.cantidad; //O(1)
    }
+  
+   public void cambiarDefinicion(String palabra,T nuevo) {
+    Nodo actual= this.raiz; //O(1)
+    for (int i=0;i<palabra.length();i++){ //O(|palabra|)
+        actual=actual.obtener(palabra.charAt(i)); //O(1)+O(1)+O(1) = O(1)
+    }
+    actual.definicion = nuevo ;
 
+   }
 
 
    //esta mal

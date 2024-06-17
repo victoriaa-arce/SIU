@@ -65,7 +65,11 @@ public class SistemaSIU {
         //vcomentario: capaz no es necesario hacer eso y solo podriamos incrementar el valor del alumno en el trie y sumar un inscripto a la materia
         //otro comentario: si hacemos lo que esta a continuacion la complejidad no se va a cumplir pq tendriamos O(|carrera|)+O(|materia|)+O(|alumnos|)
         int cantidadMateriasDelAlumno=alumnos.obtener(estudiante);
-        alumnos.insertar(estudiante,cantidadMateriasDelAlumno++);
+        
+        //alumnos.insertar(estudiante,cantidadMateriasDelAlumno++);
+        cantidadMateriasDelAlumno ++ ;
+        alumnos.cambiarDefinicion(estudiante,cantidadMateriasDelAlumno);
+        //el tema es este,queremos modificar una clave pero lo que estamos haciendo es insertar otro alumno al trie 
 
     }
 
