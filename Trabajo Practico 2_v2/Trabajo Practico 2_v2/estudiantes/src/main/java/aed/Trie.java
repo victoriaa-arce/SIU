@@ -224,7 +224,7 @@ public class Trie<T> {
         return (j>1);
     }
 
-    private class Trie_Iterador implements Iterador<String> {
+    public class Trie_Iterador  {
         ArrayList<String> palabras;
         int cont;
 
@@ -272,7 +272,7 @@ public class Trie<T> {
         }
     }
 
-    public Iterador<String> iterador() {
+    public Trie_Iterador iterador() {
         return new Trie_Iterador();
     }
 
