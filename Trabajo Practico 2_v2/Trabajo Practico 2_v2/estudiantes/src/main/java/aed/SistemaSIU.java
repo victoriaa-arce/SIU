@@ -33,12 +33,12 @@ public class SistemaSIU {
             for (int j=0;j<paresCarrerasMaterias.length;j++){     //recorro cada tupla O(|paresCarrerasMaterias|)
                 String carrera= paresCarrerasMaterias[j].getCarrera();  //obtengo la carrera O(1)+O(1)=O(1)
                 String materia=paresCarrerasMaterias[j].getNombreMateria();  //obtengo el nombre de la materia O(1)+O(1)=O(1)
-                 
 
                 if(!carreras.definido(carrera)){     //si la carrera no existe O(|carrera|)
                     Trie <Materia> materiasDeLaCarrera = new Trie<>();    //creo su trie de materias O(1)
                     materiasDeLaCarrera.insertar(materia,DatosDeLaMateria);  //le inserto la materia con sus datos O(|materia|) 
                     carreras.insertar(carrera, materiasDeLaCarrera);      // inserto el trie de materias de la carrera O(|carrera|)
+                    
                 //este if tiene complejidad O(|carrera|)+ O(1)+O(|materia|)+O(|carrera|) = O(|materia|)+O(|carrera|)
                 } else{
                     carreras.obtener(carrera).insertar(materia, DatosDeLaMateria); //O(|carrera|)+O(|materia|)
@@ -102,11 +102,15 @@ public class SistemaSIU {
     }
 
     public String[] carreras(){
-        throw new UnsupportedOperationException("Método no implementado aún");
+        String[] carreraslista = new String[carreras.tamaño()];
+        this.carreras.iterador().palabras.toArray(carreraslista);
+        return carreraslista;
     }
 
     public String[] materias(String carrera){
-        throw new UnsupportedOperationException("Método no implementado aún");	    
+        String[] materiaslista = new String[carreras.obtener(carrera).tamaño()];
+        this.carreras.obtener(carrera).iterador().palabras.toArray(materiaslista);
+        return materiaslista;
     }
 
     public int materiasInscriptas(String estudiante){

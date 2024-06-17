@@ -13,7 +13,7 @@ public class Materia {
         this.alumnos= new ListaEnlazada<>(); //O(1)
         this.otrosNombres= info; //O(1)
     } //O(1)
-
+    
     public void agregarAlumno(String alumno){
         this.alumnos.agregarAtras(alumno); //O(1)
         this.alumnos.longitud(); //O(1)

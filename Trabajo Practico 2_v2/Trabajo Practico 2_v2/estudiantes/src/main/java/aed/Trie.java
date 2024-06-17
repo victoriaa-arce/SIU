@@ -245,7 +245,7 @@ public class Trie<T> {
 
             cargarClaves( raiz, "" ); // O( largo de cada clave )
         }
-
+        
         public void cargarClaves( Nodo N, String claveActual ){
             // Recorre todo el trie en orden, recursivamente.
             // Almacenando en cada iteracion la clave del recorrido.

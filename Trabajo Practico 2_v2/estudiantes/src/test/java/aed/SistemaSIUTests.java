@@ -312,4 +312,5 @@ public class SistemaSIUTests {
         String[] carreras = new String[] {"Ciencias Biológicas", "Ciencias Físicas", "Ciencias Matemáticas", "Ciencias Químicas", "Ciencias de Datos", "Ciencias de la Computación"};
         assertArrayEquals(carreras, sistema.carreras());
     }
-}
+} 
+
