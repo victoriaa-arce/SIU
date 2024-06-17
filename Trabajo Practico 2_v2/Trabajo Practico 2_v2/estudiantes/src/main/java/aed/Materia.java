@@ -6,6 +6,7 @@ public class Materia {
     private int[] docentes;
     private ListaEnlazada<String> alumnos;
     private ParCarreraMateria[] otrosNombres;  //(nombredeltrie,nombremateria)
+    private ArrayList<Trie<Materia>> referencias;
 
 
     public Materia(ParCarreraMateria[] info){
@@ -13,6 +14,10 @@ public class Materia {
         this.alumnos= new ListaEnlazada<>(); //O(1)
         this.otrosNombres= info; //O(1)
     } //O(1)
+
+    public void agregarReferencia(Trie<Materia> referencia){
+        referencias.add(referencia);
+    }
     
     public void agregarAlumno(String alumno){
         this.alumnos.agregarAtras(alumno); //O(1)
