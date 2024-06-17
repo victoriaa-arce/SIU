@@ -36,6 +36,7 @@ public class SistemaSIU {
 
                 if(!carreras.definido(carrera)){     //si la carrera no existe O(|carrera|)
                     Trie <Materia> materiasDeLaCarrera = new Trie<>();    //creo su trie de materias O(1)
+                    DatosDeLaMateria.agregarReferencia(materiasDeLaCarrera);
                     materiasDeLaCarrera.insertar(materia,DatosDeLaMateria);  //le inserto la materia con sus datos O(|materia|) 
                     carreras.insertar(carrera, materiasDeLaCarrera);      // inserto el trie de materias de la carrera O(|carrera|)
                     
