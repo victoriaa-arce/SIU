@@ -1,24 +1,35 @@
 package aed;
 
+import java.util.ArrayList;
+
 import aed.SistemaSIU.CargoDocente;
 
 public class Materia {
     private int[] docentes;
     private ListaEnlazada<String> alumnos;
     private ParCarreraMateria[] otrosNombres;  //(nombredeltrie,nombremateria)
-    private ArrayList<Trie<Materia>> referencias;
+    private ArrayList<Trie<Materia>> referencias; 
 
 
     public Materia(ParCarreraMateria[] info){
         this.docentes= new int[4]; //O(1)
         this.alumnos= new ListaEnlazada<>(); //O(1)
         this.otrosNombres= info; //O(1)
+        this.referencias = new ArrayList<Trie<Materia>>(); // O(1)
+
     } //O(1)
 
     public void agregarReferencia(Trie<Materia> referencia){
         referencias.add(referencia);
     }
+    public ListaEnlazada<String> obtenerlistaAlumnos(){
+        return alumnos;
+    } 
+
     
+    public ArrayList<Trie<Materia>> darReferencia(){
+        return referencias;
+    }
     public void agregarAlumno(String alumno){
         this.alumnos.agregarAtras(alumno); //O(1)
         this.alumnos.longitud(); //O(1)

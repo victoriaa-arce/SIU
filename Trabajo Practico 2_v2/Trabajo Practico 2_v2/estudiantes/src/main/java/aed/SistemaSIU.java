@@ -43,6 +43,7 @@ public class SistemaSIU {
                 //este if tiene complejidad O(|carrera|)+ O(1)+O(|materia|)+O(|carrera|) = O(|materia|)+O(|carrera|)
                 } else{
                     carreras.obtener(carrera).insertar(materia, DatosDeLaMateria); //O(|carrera|)+O(|materia|)
+                    DatosDeLaMateria.agregarReferencia(carreras.obtener(carrera));
                 } 
 
 
@@ -87,7 +88,19 @@ public class SistemaSIU {
     }
 
     public void cerrarMateria(String materia, String carrera){
-        throw new UnsupportedOperationException("Método no implementado aún");	    
+        Materia info = this.carreras.obtener(carrera).obtener(materia);
+
+        for(int i = 0; i < info.darReferencia().size(); i++){
+
+            Trie<Materia> TrieAborrar = info.darReferencia().get(i);
+            TrieAborrar.borrar(info.obtenerNombres()[i].getNombreMateria());  
+        }
+        for (int i = 0; i <info.obtenerCantidad(); i++){
+            String alumno = info.obtenerlistaAlumnos().obtener(i);
+            int cantidadDeMaterias = alumnos.obtener(alumno);
+            alumnos.cambiarDefinicion(alumno, cantidadDeMaterias - 1);
+
+        }
     }
 
     public int inscriptos(String materia, String carrera){
