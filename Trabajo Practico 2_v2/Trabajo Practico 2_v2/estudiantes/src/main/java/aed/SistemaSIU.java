@@ -52,7 +52,7 @@ public class SistemaSIU {
         
         	    
     } //(O(|libretasUniversitarias|)*O(|LU|))+ O(|infoMaterias|)*(O(|paresCarrerasMaterias|)*(O(|carrera|)+O(|materia|))
- //comentario: revise esta complejidad con la que nos piden y todo lo que es materias y carreras da igual,pero tengo duda con el de libretas universitarias*lu 
+     
 
 
     public void inscribir(String estudiante, String carrera, String materia){
@@ -110,7 +110,7 @@ public class SistemaSIU {
     }
 
     public int materiasInscriptas(String estudiante){
-       int cantidadInscriptas=alumnos.obtener(estudiante);	//O(|estudiante|) la complejidad no da
-       return cantidadInscriptas;
+       int cantidadInscriptas=alumnos.obtener(estudiante);	//A simple vista seria O(|estudiante|) pero como cada libreta universitaria tiene como maximo 6 caracteres,la complejidad es O(1)
+       return cantidadInscriptas; 
     }
 }
