@@ -23,12 +23,12 @@ public class SistemaSIU {
         for(int i=0;i<libretasUniversitarias.length;i++){  //O(|libretasUniversitarias|)
             //inserto alumno al trie con valor 0 (materias anotadas)
             alumnos.insertar(libretasUniversitarias[i], 0);   //O(|LU|)
-        } //(O(|libretasUniversitarias|)*O(|LU|))
+        } //(O(|libretasUniversitarias|)*O(|LU|)) no se si esto esta bien
 
         //Creamos el diccionario de carreras con sus materias
         this.carreras= new Trie<>(); //O(1)
         for(int i=0; i<infoMaterias.length;i++){  //recorro la lista [[(carrera,materia),(carrera2,materia)][(,),(,)]] cada loop es una materia O(|infoMaterias|)
-            ParCarreraMateria[] paresCarrerasMaterias=infoMaterias[i].getParesCarreraMateria(); //FALTA
+            ParCarreraMateria[] paresCarrerasMaterias=infoMaterias[i].getParesCarreraMateria(); //O(1)
             Materia DatosDeLaMateria= new Materia(paresCarrerasMaterias); //O(1)
             for (int j=0;j<paresCarrerasMaterias.length;j++){     //recorro cada tupla O(|paresCarrerasMaterias|)
                 String carrera= paresCarrerasMaterias[j].getCarrera();  //obtengo la carrera O(1)+O(1)=O(1)
