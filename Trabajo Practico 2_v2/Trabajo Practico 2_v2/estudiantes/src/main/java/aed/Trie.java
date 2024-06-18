@@ -142,62 +142,9 @@ public class Trie<T> {
     for (int i=0;i<palabra.length();i++){ //O(|palabra|)
         actual=actual.obtener(palabra.charAt(i)); //O(1)+O(1)+O(1) = O(1)
     }
-    actual.definicion = nuevo ;
+    actual.definicion = nuevo ; //O(1)
 
-   }
-
-
-   //esta mal
-   /*  public recorrerRecu (StringBuffer palabra, Nodo nodo, ArrayList listado){
-        if (noApuntaANadie(actual) && listado.length-1==this.cantidad){
-            return listado;
-        }
-        if (noApuntaANadie(actual)){
-            listado.add(palabra);
-        }
-        if (masDeUnHijo(actual)) {
-            recorrer(actual.obtener(primeroConReferencia(actual)));
-            
-        }
-        palabra.append(primeroConReferencia(actual));
-
-
-        
-        listado.add(primeroConReferencia(actual));
-        recorrer(actual.obtener(primeroConReferencia(actual)));
-
-    } */
-    /*public recRecorrido() {
-        if(raiz==null) {
-            return "" ;
-
-        }
-        else {
-            recorrido(raiz,null,0) ;
-        }
-    }
-    public recorrido(Nodo actual,StringBuffer palabra,int tamaño) {
-        StringBuffer prefijo = new StringBuffer() ;
-        ArrayList res = new ArrayList<StringBuffer>() ;
-        if(actual.definicion != null) {
-            res.add(prefijo) ;
-            return res ;
-        }
-        else {
-            for(int i=0 ; i<255 ;i++) {
-                if(actual.lista[i] != null) {
-                    c = (char) i ;
-                    prefijo.append(c) ;
-                    recorrido(actual.lista[i],prefijo,tamaño) ;
-
-                }
-
-            }        }
-    } */
-  
-
-
-
+   } //O(|palabra|)
 
 
     //FUNCIONES AUXILIARES
@@ -238,7 +185,7 @@ public class Trie<T> {
         int cont;
 
         public Trie_Iterador(){
-            // Crear el iterador ---> O( largo de cada clave )
+            // Creo el iterador = O( largo de cada clave )
 
             this.cont = 0;
             this.palabras = new ArrayList<String>(); 
@@ -247,10 +194,8 @@ public class Trie<T> {
         }
         
         public void cargarClaves( Nodo N, String claveActual ){
-            // Recorre todo el trie en orden, recursivamente.
-            // Almacenando en cada iteracion la clave del recorrido.
-
-            // O( 256 ) * O( largo de cada clave ) = O( largo de cada clave )
+            // Hace el recorrido del Trie en orden lexicográfico de manera recursiva.
+            // En  cada paso recursivo se almacena la clave del recorrido.
 
             // Si este nodo tenia una clave definida
             if(N.definicion != null){
@@ -262,12 +207,12 @@ public class Trie<T> {
                 Nodo caracter = N.obtener( (char) i);
 
                 // Si es nulo no lo consideramos
-                if( caracter != null ){
+                if( caracter != null ){ 
                     cargarClaves(caracter, claveActual + String.valueOf( (char) i));
                 }
             }
 
-        }
+        } // O( 256 ) * O( largo de cada clave ) = O( largo de cada clave )
 
         public boolean haySiguiente() {
             // O(1)            
@@ -275,14 +220,14 @@ public class Trie<T> {
         }
     
         public String siguiente() {
-            // O(1)
-            this.cont += 1;
-            return this.palabras.get(cont-1);
+         
+            this.cont += 1; //O(1)
+            return this.palabras.get(cont-1); //O(1)
         }
     }
 
     public Trie_Iterador iterador() {
-        return new Trie_Iterador();
+        return new Trie_Iterador(); 
     }
 
 }

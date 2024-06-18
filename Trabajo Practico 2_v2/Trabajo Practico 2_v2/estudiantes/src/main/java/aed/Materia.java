@@ -20,15 +20,15 @@ public class Materia {
     } //O(1)
 
     public void agregarReferencia(Trie<Materia> referencia){
-        referencias.add(referencia);
+        referencias.add(referencia); // O(1)
     }
     public ListaEnlazada<String> obtenerlistaAlumnos(){
-        return alumnos;
+        return alumnos; //O(1)
     } 
 
     
     public ArrayList<Trie<Materia>> darReferencia(){
-        return referencias;
+        return referencias; // O(1)
     }
     public void agregarAlumno(String alumno){
         this.alumnos.agregarAtras(alumno); //O(1)
