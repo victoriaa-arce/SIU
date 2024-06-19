@@ -184,18 +184,19 @@ public class Trie<T> {
 
     public class Trie_Iterador  {
         ArrayList<String> palabras;
-        int cont;
+        int contador;
 
         public Trie_Iterador(){
-            // Creo el iterador = O( largo de cada clave )
+            // Creo el iterador = O(largo de cada clave )
 
-            this.cont = 0;
+            this.contador = 0;
             this.palabras = new ArrayList<String>(); 
 
-            cargarClaves( raiz, "" ); // O( largo de cada clave )
+            agregarClaves( raiz, "" ); 
+            // O( largo de cada clave )
         }
         
-        public void cargarClaves( Nodo N, String claveActual ){
+        public void agregarClaves( Nodo N, String claveActual ){
             // Hace el recorrido del Trie en orden lexicográfico de manera recursiva.
             // En  cada paso recursivo se almacena la clave del recorrido.
 
@@ -210,21 +211,21 @@ public class Trie<T> {
 
                 // Si es nulo no lo consideramos
                 if( caracter != null ){ 
-                    cargarClaves(caracter, claveActual + String.valueOf( (char) i));
+                    agregarClaves(caracter, claveActual + String.valueOf( (char) i));
                 }
             }
 
-        } // O( 256 ) * O( largo de cada clave ) = O( largo de cada clave )
+        } // O(256) * O(largo de cada clave) = O(largo de cada clave)
 
         public boolean haySiguiente() {
             // O(1)            
-            return (this.cont < this.palabras.size());
+            return (this.contador < this.palabras.size());
         }
     
         public String siguiente() {
          
-            this.cont += 1; //O(1)
-            return this.palabras.get(cont-1); //O(1)
+            this.contador += 1; //O(1)
+            return this.palabras.get(contador-1); //O(1)
         }
     }
 
