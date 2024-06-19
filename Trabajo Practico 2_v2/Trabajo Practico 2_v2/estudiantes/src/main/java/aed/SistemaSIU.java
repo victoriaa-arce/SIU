@@ -56,7 +56,7 @@ public class SistemaSIU {
         } //O(|infoMaterias|)*(O(|paresCarrerasMaterias|)*(O(|carrera|)+O(|materia|))
         
         	    
-    } //O(|libretasUniversitarias|)+ O(|infoMaterias|)*(O(|paresCarrerasMaterias|)*(O(|carrera|)+O(|materia|))
+    } //O(|libretasUniversitarias|)+ (O(|infoMaterias|)*(O(|paresCarrerasMaterias|))*(O(|carrera|)+O(|materia|))
      
 
 
@@ -126,6 +126,7 @@ public class SistemaSIU {
         // O(|carrera|)+ Por cada materia del Trie Materias,O(|materia|)
         return materiaslista; //O(1)
     } // O(|carrera|)+ Por cada materia del Trie Materias,O(|materia|)
+    //preguntar = O(|carrera|)+ carrera.obtener(carrera).cantidad
 
     public int materiasInscriptas(String estudiante){
        int cantidadInscriptas=alumnos.obtener(estudiante);	//A simple vista seria O(|estudiante|) pero como cada libreta universitaria tiene como maximo 6 caracteres,la complejidad es O(1)
