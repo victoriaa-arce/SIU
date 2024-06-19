@@ -1,7 +1,9 @@
 package aed;
 
 import java.util.ArrayList;
+/* InvRep: La cantidad de apariciones en las distintas materias de cada alumno será igual al valor asociado con ese alumno en el Trie.
 
+*/
 public class SistemaSIU {
     private Trie<Integer> alumnos;
     private Trie<Trie <Materia>> carreras;
