@@ -3,8 +3,12 @@ package aed;
 import java.util.ArrayList;
 
 import aed.SistemaSIU.CargoDocente;
-//InvRep: Cada elemento de alumnos,pertenece al Trie alumnos de SistemaSIU.
-//Por cada elemento de otrosNombres,existe un elemento en la misma posición en referencias que es el Trie al que se accede a través del Trie carreras de SistemaSIU que contiene  
+/*InvRep: Cada elemento de alumnos,pertenece al Trie alumnos de SistemaSIU.
+Por cada elemento de otrosNombres,para su primer componente (carrera),existe un elemento en la misma posición en referencias que es el Trie al que se accede a través del Trie carreras de
+SistemaSIU que contiene el segundo componente del elemento de otrosNombres. 
+La longitud de referencias es igual a la longitud de otrosNombres.
+La longitud de docentes es 4 siempre.
+*/
 public class Materia {
     private int[] docentes;
     private ListaEnlazada<String> alumnos;
