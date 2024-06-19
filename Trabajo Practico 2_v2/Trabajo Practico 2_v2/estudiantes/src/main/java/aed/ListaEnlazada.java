@@ -1,6 +1,9 @@
 package aed;
 
 import java.util.*;
+//InvRep : El valor de la refererencia al anterior al primero es nulo,y el valor de la referencia al siguiente al último tambien lo es.
+//No existen ciclos dentro de la lista.
+//No existe ningún nodo nulo.
 
 public class ListaEnlazada<T> {
     private Nodo primero;
