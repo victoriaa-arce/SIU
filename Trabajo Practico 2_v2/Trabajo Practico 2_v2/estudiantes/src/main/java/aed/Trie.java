@@ -4,9 +4,11 @@ import java.util.*;
 
 public class Trie<T> {
 
-    //Invariante de Representación
-    // No llego por dos claves al mismo nodo / los nodos tienen un solo padre salvo la raíz (que no tiene padre) / es un árbol
-    //No hay nodos inútiles o (bien dicho) los nodos, si no tienen significado, tienen hijos.
+    /*Invariante de Representación:
+    No llego por dos claves al mismo nodo  
+    Los nodos tienen un solo padre salvo la raíz (que no tiene padre) 
+    Es un árbol
+    No hay nodos inútiles o (bien dicho) los nodos, si no tienen significado, tienen hijos. */
 
 
 
