@@ -123,10 +123,10 @@ public class SistemaSIU {
         String[] materiaslista = new String[carreras.obtener(carrera).tamaño()]; //Creamos un arreglo de longitud igual a la cantidad de materias de la carrera.
         //O(1)+O(1)+O(|carrera|)
         this.carreras.obtener(carrera).iterador().palabras.toArray(materiaslista); //Buscamos en el Trie carreras la carrera,recorremos el Trie Materias de esa carrera con el iterador y pasamos el recorrido de un ArrayList a un arreglo.
-        // O(|carrera|)+ Por cada materia del Trie Materias,O(|materia|)
+        // O(|carrera|)+ O(carrera.obtener(carrera).cantidad * (|materia|))
         return materiaslista; //O(1)
-    } // O(|carrera|)+ Por cada materia del Trie Materias,O(|materia|)
-    //preguntar = O(|carrera|)+ carrera.obtener(carrera).cantidad
+    }
+    // = O(|carrera|)+ O(carrera.obtener(carrera).cantidad * (|materia|))
 
     public int materiasInscriptas(String estudiante){
        int cantidadInscriptas=alumnos.obtener(estudiante);	//A simple vista seria O(|estudiante|) pero como cada libreta universitaria tiene como maximo 6 caracteres,la complejidad es O(1)
