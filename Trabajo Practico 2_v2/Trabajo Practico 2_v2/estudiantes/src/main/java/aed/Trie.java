@@ -23,8 +23,8 @@ public class Trie<T> {
     public Nodo() {
         this.definicion=null; //O(1)
         this.lista= new ArrayList<Nodo>() ; //O(1)
-
-        for(int i=0; i<256; i++){ //O(256)
+    
+        for(int i=0; i<256; i++){ //O(256) Creamos el ArrayList con 256 posiciones (ASCII) en null
             this.lista.add(null); //O(1)
         } //O(1)*O(256) = 0(1)
 
