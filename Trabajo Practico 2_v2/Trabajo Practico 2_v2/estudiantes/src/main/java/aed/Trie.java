@@ -59,7 +59,7 @@ public class Trie<T> {
         return false;  //O(1)+O(1) = O(1)
     } else{
 
-        for (int i=0; i<palabra.length();i++){  //recorre la palabra por cararcter Ej: armario  O(|palabra|)
+        for (int i=0; i<palabra.length();i++){  //recorre la palabra por caracter Ej: armario  O(|palabra|)
             if (!actual.contiene(palabra.charAt(i))){  //si en la posicion array[a]=null  O(1) + O(1) +  O(1) =  O(1)
                 return false;   //O(1)+O(1)=O(1)*O(|palabra|) = O(|palabra|)
             }
