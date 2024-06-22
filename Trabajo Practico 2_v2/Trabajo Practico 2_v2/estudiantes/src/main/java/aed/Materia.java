@@ -4,10 +4,12 @@ import java.util.ArrayList;
 
 import aed.SistemaSIU.CargoDocente;
 /*InvRep: Cada elemento de alumnos,pertenece al Trie alumnos de SistemaSIU.No existen repetidos en la lista de alumnos.
-Por cada elemento de otrosNombres,para su primer componente (carrera),existe un elemento en la misma posición en referencias que es el Trie al que se accede a través del Trie carreras de
+Por cada elemento de otrosNombres,para su primer componente (carrera),existe un elemento en la misma posición en referencias que corresponde al valor de dicha carrera en el Trie de carreras en
 SistemaSIU que contiene el segundo componente del elemento de otrosNombres. 
 La longitud de referencias es igual a la longitud de otrosNombres.
-La longitud de docentes es 4 siempre.
+La longitud de docentes es 4 siempre. La primera posicion corresponde al Profesor, la segunda al JTP, 
+la tercera a los Ayudantes de Primera y por último, la cuarta a los Ayudantes de Segunda.
+
 
 */
 public class Materia {
@@ -38,7 +40,7 @@ public class Materia {
     }
     public void agregarAlumno(String alumno){
         this.alumnos.agregarAtras(alumno); //O(1)
-        this.alumnos.longitud(); //O(1)
+        
     }
 
 

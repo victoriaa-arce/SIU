@@ -13,7 +13,11 @@ Fecha de entrega = 23/06/2024
 package aed;
 
 import java.util.ArrayList;
-/* InvRep: La cantidad de apariciones en las distintas materias de cada alumno será igual al valor asociado con ese alumno en el Trie.
+/* InvRep: La cantidad de apariciones de cada alumno en las distintas materias  será igual al valor asociado con ese alumno en el Trie alumnos. 
+Los valores asociados a cada alumno en el Trie alumnos son postivos. Los alumnos que figuran en una materia tambien lo serán de la misma materia con 
+distinto nombre. El valor asociado con una carrera es un Trie que contiene las materias de esa carrera. A su vez, el valor asociado con una materia es de la 
+clase Materia.
+No hay repetidos en el Trie Alumnos, ni en el Trie carreras. 
 
 */
 public class SistemaSIU {
