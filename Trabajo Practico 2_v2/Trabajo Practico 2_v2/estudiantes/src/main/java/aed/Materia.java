@@ -23,9 +23,9 @@ public class Materia {
         this.docentes= new int[4]; //O(1)
         this.alumnos= new ListaEnlazada<>(); //O(1)
         this.otrosNombres= info; //O(1)
-        this.referencias = new ArrayList<Trie<Materia>>(); // O(1)
+        this.referencias = new ArrayList<Trie<Materia>>(info.length); // O(|info|)
 
-    } //O(1)
+    } //O(|info|) == O(cantidad de nombres de una materia)
 
     public void agregarReferencia(Trie<Materia> referencia){
         referencias.add(referencia); // O(1)

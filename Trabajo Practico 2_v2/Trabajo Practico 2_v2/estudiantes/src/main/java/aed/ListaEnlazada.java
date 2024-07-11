@@ -151,15 +151,15 @@ public class ListaEnlazada<T> {
 
         public T siguiente(){
             anterior = actual; // O(1)
-            actual = actual.siguiente; // O(1)
-            return anterior.valor; // O(1)
+            actual = actual.sig; // O(1)
+            return anterior.dato; // O(1)
         }  // O(1)
         
 
         public T anterior() {
 	        actual = anterior; //O(1)
-            anterior = actual.anterior; //O(1)
-            return actual.valor; //O(1)
+            anterior = actual.ant; //O(1)
+            return actual.dato; //O(1)
         } //O(1)
     }
 

@@ -22,11 +22,11 @@ public class Trie<T> {
 
     public Nodo() {
         this.definicion=null; //O(1)
-        this.lista= new ArrayList<Nodo>() ; //O(1)
+        this.lista= new ArrayList<Nodo>(256) ; //O(256)
     
         for(int i=0; i<256; i++){ //O(256) Creamos el ArrayList con 256 posiciones (ASCII) en null
             this.lista.add(null); //O(1)
-        } //O(1)*O(256) = 0(1)
+        } //O(1)*O(256)*O(256) = 0(1)
 
 
     }
@@ -190,7 +190,7 @@ public class Trie<T> {
             // Creo el iterador = O(largo de cada clave )
 
             this.contador = 0;
-            this.palabras = new ArrayList<String>(); 
+            this.palabras = new ArrayList<String>(cantidad); //O(cantidad de palabras en el Trie)
 
             agregarClaves( raiz, "" ); 
             // O( largo de cada clave )
@@ -201,17 +201,17 @@ public class Trie<T> {
             // En  cada paso recursivo se almacena la clave del recorrido.
 
             // Si este nodo tenia una clave definida
-            if(N.definicion != null){
-                this.palabras.add(claveActual);
+            if(N.definicion != null){ //O(1)
+                this.palabras.add(claveActual); //O(1)
             }
 
             // Nos fijamos en las letras de este nodo a ver si continua
-            for( int i=0; i<256; i++ ){
-                Nodo caracter = N.obtener( (char) i);
+            for( int i=0; i<256; i++ ){ //O(256)
+                Nodo caracter = N.obtener( (char) i); //O(1)
 
                 // Si es nulo no lo consideramos
-                if( caracter != null ){ 
-                    agregarClaves(caracter, claveActual + String.valueOf( (char) i));
+                if( caracter != null ){ //O(1)
+                    agregarClaves(caracter, claveActual + String.valueOf( (char) i)); 
                 }
             }
 
@@ -219,7 +219,7 @@ public class Trie<T> {
 
         public boolean haySiguiente() {
             // O(1)            
-            return (this.contador < this.palabras.size());
+            return (this.contador < this.palabras.size()); //O(1)
         }
     
         public String siguiente() {
@@ -230,7 +230,7 @@ public class Trie<T> {
     }
 
     public Trie_Iterador iterador() {
-        return new Trie_Iterador(); 
+        return new Trie_Iterador();  //O(1)
     }
 
 }
