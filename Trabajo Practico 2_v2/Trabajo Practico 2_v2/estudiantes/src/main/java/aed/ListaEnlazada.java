@@ -132,32 +132,35 @@ public class ListaEnlazada<T> {
     } //O(|ListaEnlazada|)
 
     private class ListaIterador {
-    	private int dedo;
+    	private Nodo actual;
+        private Nodo anterior;
         private ListaEnlazada<T> l;
 
         public ListaIterador(ListaEnlazada<T> lista){
-            dedo = 0; //O(1)
+            actual = lista.primero; //O(1)
             l = lista; //O(1)
         } //O(1)
 
         public boolean haySiguiente() {
-            return dedo != l.longitud;  //O(1)
+            return actual != null;  //O(1)
         }//O(1)
         
         public boolean hayAnterior() {
-            return dedo != 0;   //O(1)
+            return anterior != null;  //O(1)
         }//O(1)
 
         public T siguiente(){
-            dedo++; //O(1)
-            return l.obtener(dedo-1); //O(|ListaEnlazada|)
-        }//O(|ListaEnlazada|)
+            anterior = actual; // O(1)
+            actual = actual.siguiente; // O(1)
+            return anterior.valor; // O(1)
+        }  // O(1)
         
 
         public T anterior() {
-	        dedo --; //O(1)
-            return l.obtener(dedo); //O(|ListaEnlazada|)
-        } //O(|ListaEnlazada|)
+	        actual = anterior; //O(1)
+            anterior = actual.anterior; //O(1)
+            return actual.valor; //O(1)
+        } //O(1)
     }
 
     public ListaIterador iterador() {
